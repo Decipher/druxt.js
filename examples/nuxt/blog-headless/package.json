@@ -1,0 +1,25 @@
+{
+  "name": "example-druxt-blog-headless",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt",
+    "generate": "nuxt generate",
+    "start": "nuxt start",
+    "storybook": "nuxt storybook"
+  },
+  "dependencies": {
+    "@nuxt/content": "latest",
+    "@nuxtjs/pwa": "latest",
+    "@nuxtjs/storybook": "latest",
+    "core-js": "latest",
+    "druxt-entity": "link:../../../packages/entity",
+    "druxt-views": "link:../../../packages/views",
+    "nuxt-edge": "latest",
+    "vuetify": "^2.5.5"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.12.1"
+  }
+}
