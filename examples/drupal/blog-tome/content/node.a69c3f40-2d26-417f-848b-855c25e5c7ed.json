@@ -1,0 +1,87 @@
+{
+    "uuid": [
+        {
+            "value": "a69c3f40-2d26-417f-848b-855c25e5c7ed"
+        }
+    ],
+    "langcode": [
+        {
+            "value": "en"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "article",
+            "target_type": "node_type",
+            "target_uuid": "b4fe4554-5049-48c8-8681-e6a38175da46"
+        }
+    ],
+    "revision_timestamp": [
+        {
+            "value": "2021-07-29T06:50:49+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "revision_uid": [
+        {
+            "target_type": "user",
+            "target_uuid": "d465ef93-b4c3-48c4-8fae-cd525226d072"
+        }
+    ],
+    "revision_log": [],
+    "status": [
+        {
+            "value": true
+        }
+    ],
+    "uid": [
+        {
+            "target_type": "user",
+            "target_uuid": "d465ef93-b4c3-48c4-8fae-cd525226d072"
+        }
+    ],
+    "title": [
+        {
+            "value": "Hello world"
+        }
+    ],
+    "created": [
+        {
+            "value": "2021-07-29T06:50:28+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2021-07-29T06:50:49+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "promote": [
+        {
+            "value": false
+        }
+    ],
+    "sticky": [
+        {
+            "value": false
+        }
+    ],
+    "default_langcode": [
+        {
+            "value": true
+        }
+    ],
+    "revision_translation_affected": [
+        {
+            "value": true
+        }
+    ],
+    "body": [
+        {
+            "value": "This is an Article.",
+            "format": "plain_text",
+            "summary": ""
+        }
+    ]
+}
