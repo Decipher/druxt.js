@@ -11,24 +11,43 @@ tasks:
       yarn build
       gp sync-done bundle
 
-  - name: drupal-9
-    init: |
-      # drupal installation
-      .gitpod/download-ddev-images.sh
-      .gitpod/setup-drupal.sh
-    command: |
-      .gitpod/setup-ddev.sh
-      cd $GITPOD_REPO_ROOT/examples/drupal/drupal-9 && ddev start
-      gp sync-done ddev
+  # - name: drupal-9
+  #   init: |
+  #     # drupal installation
+  #     .gitpod/download-ddev-images.sh
+  #     .gitpod/setup-drupal-9.sh
+  #   command: |
+  #     .gitpod/setup-ddev.sh
+  #     cd $GITPOD_REPO_ROOT/examples/drupal/drupal-9 && ddev start
+  #     gp sync-done ddev
 
-  - name: druxt-site
+  # - name: druxt-site
+  #   init: |
+  #     # druxt-site installation
+  #     gp sync-await bundle
+  #     cd $GITPOD_REPO_ROOT/examples/nuxt/druxt-site && yarn
+  #   command: |
+  #     gp sync-await ddev
+  #     cd $GITPOD_REPO_ROOT/examples/nuxt/druxt-site && BASE_URL=$(gp url 8080) yarn dev
+
+  # Headless, Serverless, Drupal Blog
+  - name: backend
     init: |
-      # druxt-site installation
+      # Installing DDev and Drupal backend.
+      .gitpod/download-ddev-images.sh
+      .gitpod/setup-blog-tome.sh
+    command: |
+      EXAMPLE_DIR=blog-tome .gitpod/setup-ddev.sh
+      cd $GITPOD_REPO_ROOT/examples/drupal/blog-tome && ddev start
+      gp sync-done ddev
+  - name: frontend
+    init: |
+      # Installing DruxtJS frontend.
       gp sync-await bundle
-      cd $GITPOD_REPO_ROOT/examples/nuxt/druxt-site && yarn
+      cd $GITPOD_REPO_ROOT/examples/nuxt/blog-headless && yarn
     command: |
       gp sync-await ddev
-      cd $GITPOD_REPO_ROOT/examples/nuxt/druxt-site && BASE_URL=$(gp url 8080) yarn dev
+      cd $GITPOD_REPO_ROOT/examples/nuxt/blog-headless && BASE_URL=$(gp url 8080) yarn dev
 
 # VScode xdebug extension
 vscode:
@@ -40,9 +59,11 @@ vscode:
 ports:
   # Nuxt/Druxt
   - port: 3000
+    onOpen: open-preview
     visibility: public
   # Drupal
   - port: 8080
+    onOpen: ignore
     visibility: public
   # Currently un-notified and unsupported mailhog http port
   - port: 8025

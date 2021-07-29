@@ -1,0 +1,11 @@
+uuid: ecfc4d87-362b-40b6-a5a5-c3237489a062
+langcode: en
+status: true
+dependencies: {  }
+name: Article
+type: article
+description: 'An <em>Article</em> can be used to create Blog content.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: true

@@ -1,58 +1,42 @@
 <template>
   <v-app>
     <v-navigation-drawer
-      v-model="drawer"
       fixed
       app
+      v-model="drawer"
     >
-      NAVIGATION
-      <!-- <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list> -->
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="text-h6">
+            Articles
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-divider />
+      <DruxtView view-id="content" display-id="page_1">
+        <template #default="{ results }">
+          <v-treeview
+            activatable
+            dense
+            hoverable
+            :items="treeItems(results)"
+            @update:active="onUpdateActive"
+          />
+        </template>
+      </DruxtView>
     </v-navigation-drawer>
     <v-app-bar
       fixed
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
+      <v-btn icon>
+        <v-icon @click="setMode('view')">mdi-file-find</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon @click="setMode('edit')">mdi-pencil</v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -60,55 +44,50 @@
         <Nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
     <v-footer
       :absolute="true"
       app
     >
-      <span><v-link>DruxtJS.org</v-link></span>
+      <span><a href="https://druxtjs.org" target="_blank">DruxtJS.org</a></span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
+
 export default {
-  data () {
-    return {
-      clipped: false,
-      drawer: false,
-      items: [
-        // {
-        //   icon: 'mdi-apps',
-        //   title: 'Welcome',
-        //   to: '/'
-        // },
-        // {
-        //   icon: 'mdi-chart-bubble',
-        //   title: 'Inspire',
-        //   to: '/inspire'
-        // }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
-    }
+  data: ({ $route }) => ({
+    drawer: true,
+  }),
+
+  computed: {
+    title: ({ articles, uuid }) => ['DruxtWeaver', articles && uuid && articles[uuid].data.attributes.title].filter((o) => o).join(' - '),
+
+    ...mapState({
+      // active: state => state.weaver.active || {},
+      // articles: state => state.druxt.resources['node--article'] || null,
+    })
+  },
+
+  methods: {
+    onUpdateActive(active) {
+      const uuid = active.pop()
+      this.setActive(uuid)
+      this.$router.push({ hash: uuid })
+    },
+
+    treeItems(results) {
+      return results.map((o) => ({
+        id: o.id,
+        name: o.attributes.title,
+      }))
+    },
+
+    ...mapMutations({
+      setActive: 'weaver/setActive',
+      setMode: 'weaver/setMode',
+    })
   }
 }
 </script>

@@ -1,0 +1,31 @@
+uuid: c497cd68-2f9b-4f30-8fba-96b7e61b0c90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_components
+    - node.type.article
+    - paragraphs.paragraphs_type.wysiwyg
+  module:
+    - entity_reference_revisions
+id: node.article.field_components
+field_name: field_components
+entity_type: node
+bundle: article
+label: Components
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      wysiwyg: wysiwyg
+    target_bundles_drag_drop:
+      wysiwyg:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

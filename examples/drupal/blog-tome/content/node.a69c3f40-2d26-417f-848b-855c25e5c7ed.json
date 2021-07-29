@@ -13,7 +13,7 @@
         {
             "target_id": "article",
             "target_type": "node_type",
-            "target_uuid": "b4fe4554-5049-48c8-8681-e6a38175da46"
+            "target_uuid": "ecfc4d87-362b-40b6-a5a5-c3237489a062"
         }
     ],
     "revision_timestamp": [
@@ -53,7 +53,7 @@
     ],
     "changed": [
         {
-            "value": "2021-07-29T06:50:49+00:00",
+            "value": "2021-07-29T13:35:05+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
@@ -77,11 +77,10 @@
             "value": true
         }
     ],
-    "body": [
+    "field_components": [
         {
-            "value": "This is an Article.",
-            "format": "plain_text",
-            "summary": ""
+            "target_type": "paragraph",
+            "target_uuid": "f81861cd-8d90-4124-ab40-b3f71dc35d1a"
         }
     ]
 }

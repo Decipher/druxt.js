@@ -10,7 +10,7 @@ set -eu -o pipefail
 DRUPAL_DIR="${GITPOD_REPO_ROOT}/examples/drupal/drupal-9"
 
 # Set up DDEV
-cd "$GITPOD_REPO_ROOT" && .gitpod/setup-ddev.sh
+cd "$GITPOD_REPO_ROOT" && EXAMPLE_DIR=drupal-9 .gitpod/setup-ddev.sh
 
 # Set up Drupal website
 cd "$DRUPAL_DIR" && ddev composer install

@@ -20,9 +20,10 @@ display:
       access:
         type: perm
         options:
-          perm: 'access content overview'
+          perm: 'access druxt resources'
       cache:
-        type: tag
+        type: none
+        options: {  }
       query:
         type: views_query
       exposed_form:

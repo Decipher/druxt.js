@@ -1,4 +1,4 @@
-import colors from 'vuetify/es5/util/colors'
+const baseUrl = process.env.BASE_URL || 'http://blog-tome.ddev.site'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -47,7 +47,7 @@ export default {
   ],
 
   druxt: {
-    baseUrl: 'https://demo-api.druxtjs.org'
+    baseUrl,
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -64,5 +64,7 @@ export default {
   vuetify: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+
+  telemetry: true,
 }

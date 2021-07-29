@@ -10,6 +10,8 @@
     "storybook": "nuxt storybook"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "latest",
+    "@ckeditor/ckeditor5-vue2": "latest",
     "@nuxt/content": "latest",
     "@nuxtjs/pwa": "latest",
     "@nuxtjs/storybook": "latest",
@@ -17,6 +19,7 @@
     "druxt-entity": "link:../../../packages/entity",
     "druxt-views": "link:../../../packages/views",
     "nuxt-edge": "latest",
+    "vuedraggable": "latest",
     "vuetify": "^2.5.5"
   },
   "devDependencies": {
