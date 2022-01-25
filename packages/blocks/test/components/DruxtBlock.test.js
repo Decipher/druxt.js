@@ -146,4 +146,10 @@ describe('Component - DruxtBlock', () => {
       block: wrapper.vm.block,
     })
   })
+
+  test('error - missing required props', () => {
+    const wrapper = mountComponent({})
+    // Ensure that error message matches snapshot.
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 })
