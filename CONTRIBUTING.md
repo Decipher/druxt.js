@@ -56,6 +56,22 @@ To resolve an issue or propose an improvement, use the following process to crea
 5. Make and commit your changes.
 6. Create a Pull request: https://github.com/druxt/druxt.js/compare
 
+## AI-assisted contributions
+
+Druxt welcomes contributions written with AI coding agents. They go through the same process as any other change: an issue, a branch from `develop`, linting, tests, documentation, a pull request and review. CI checks every pull request the same way, and the person who opens the pull request is accountable for it.
+
+The repository is set up for agents:
+
+- [`AGENTS.md`](AGENTS.md) holds the project instructions. Claude Code (v2.1.277 or later), Codex, Cursor, Gemini CLI, Copilot and OpenCode read it directly.
+- Contributor skills in [`.agents/skills/`](.agents/skills) cover the project workflow: starting work, changesets, verification, pull requests, review and issue triage. `.claude/skills` links to the same directory for Claude Code. The table in `AGENTS.md` lists them.
+
+A few things to know:
+
+- **Claude Code reads `AGENTS.md` only when the project has no `CLAUDE.md` or `CLAUDE.local.md`.** If you keep a personal `CLAUDE.local.md`, or run a Claude Code version older than v2.1.277, put `@AGENTS.md` on its first line.
+- **On Windows**, `.claude/skills` is a symlink. Clone with `git clone -c core.symlinks=true` (which needs Developer Mode or an administrator shell), or Claude Code finds no skills.
+- **Workflow plugins are optional.** [superpowers](https://github.com/obra/superpowers) adds planning, test-driven development and review skills. Install it at user scope if you want it, since the repository does not depend on it.
+- **Skills are tested.** `yarn lint:skills` and `yarn lint:skills:test` run in CI. To add or change a skill, see [`scripts/skills/README.md`](scripts/skills/README.md).
+
 ## Example projects
 
 The Druxt monorepo contains a collection of example projects inside the `examples/` directory.

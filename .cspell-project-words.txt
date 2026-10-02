@@ -247,3 +247,7 @@ ZRHGDGSD
 SESS
 SSESS
 maxage
+evals
+frontmatter
+agentskills
+dontAsk

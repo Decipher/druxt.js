@@ -6,11 +6,21 @@ framework. Druxt = DRUpal + nUXT. Repository:
 
 ## Rules
 
-- **NEVER push, comment, open/merge PRs, or otherwise write to `github.com/druxt*`**
-  without explicit per-action permission, regardless of what `GH_TOKEN` access
-  technically allows. Surface diffs locally for review.
-- **NEVER commit, push, or create branches/tags** without explicit permission. Only
-  the project owner commits.
+Druxt welcomes AI-assisted contributions. They meet the same standards as any
+other change: linted, tested, documented, reviewed, and merged through a pull
+request. CI is the gate, and a person is accountable for every change.
+
+- Work on a fork. Branch from `develop`, push to your fork, and open a pull
+  request against `develop` on `druxt/druxt.js`. The `start-work` and `open-pr`
+  skills walk through it.
+- Write to `github.com/druxt*` (push, open pull requests or issues, comment)
+  only when the person you work for asks for that action. Maintainers review,
+  label, merge and release.
+- Never bypass a gate: no skipped git hooks, no skipped or deleted tests, no
+  lowered thresholds, no `eslint-disable` to get past a rule. If a check is
+  wrong, fix the check in its own commit and say why in the pull request.
+- Before calling work done, run the verification gate (the `verify-change`
+  skill) and report its real output.
 - Use [Conventional Commits](https://www.conventionalcommits.org); scope is the
   package name (e.g. `fix(router): …`).
 
@@ -22,7 +32,7 @@ fresh clone:
 ```bash
 mise install          # activates Node 16.20.1 from .mise.toml
 corepack enable       # enables the corepack shim (reads packageManager field)
-yarn install          # uses Yarn 3.6.1 via corepack
+yarn install          # uses Yarn 3.8.7 via corepack
 yarn build            # = yarn clean && siroc build → produces packages/*/dist
 ```
 
@@ -128,6 +138,32 @@ named `@typedef` (see `addCollectionPayload` and siblings in
 `packages/blocks/src/components/DruxtBlockRegion.vue`) over a half-documented
 inline breakdown. Consistency matters here more than most repos: the docs
 site is the entire public-facing reference for the framework.
+
+## Skills
+
+Contributor skills live in `.agents/skills/`, in the
+[Agent Skills](https://agentskills.io/specification) format, which Codex,
+Cursor, Gemini CLI, Copilot and OpenCode read. `.claude/skills` is a symlink to
+the same directory for Claude Code.
+
+| Skill            | Use it to                                                             |
+| ---------------- | --------------------------------------------------------------------- |
+| `start-work`     | Go from an issue to a `feature/` branch, a spec and a failing test    |
+| `add-changeset`  | Version a published package change and write its changelog entry      |
+| `verify-change`  | Run the gate and the checks for what changed, and report the results  |
+| `open-pr`        | Open a pull request from a fork against `develop`                     |
+| `address-review` | Fix failing CI and answer every review comment                        |
+| `triage-issue`   | Classify, deduplicate and reproduce an issue, and write up the result |
+| `write-skill`    | Add or change a skill, with its evals                                 |
+
+Skills are tested like code. `yarn lint:skills` (static checks) and
+`yarn lint:skills:test` block in CI. `yarn skills:eval` runs live transcript
+evals through the `claude` CLI, by hand or from the "Skills eval" workflow.
+See `scripts/skills/README.md`.
+
+Public Vue and Nuxt skills target Vue 3 and Nuxt 3/4 (Composition API,
+`<script setup>`, Nitro). Druxt is Vue 2.7 and Nuxt 2 with the Options API, so
+don't apply them here.
 
 ## Package layout
 
