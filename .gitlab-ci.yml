@@ -297,6 +297,21 @@ lint:knip:
     - yarn lint:knip
     - section_end "knip"
 
+# Mirrors the GitHub lint job's skills steps: static checks for the
+# contributor skills in .agents/skills, and the tests for the checker and the
+# eval grader. Neither needs a build or credentials.
+lint:skills:
+  extends: .node
+  stage: lint
+  interruptible: true
+  script:
+    - section_start "skills" "Checking the contributor skills"
+    - corepack enable
+    - yarn install --immutable
+    - yarn lint:skills
+    - yarn lint:skills:test
+    - section_end "skills"
+
 #
 # --- Test Stage ---
 #
