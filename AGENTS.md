@@ -163,6 +163,7 @@ it.** The path is the same in every tool:
 | [`address-review`](.agents/skills/address-review/SKILL.md) | Fix failing CI and answer every review comment                        |
 | [`triage-issue`](.agents/skills/triage-issue/SKILL.md)     | Classify, deduplicate and reproduce an issue, and write up the result |
 | [`write-skill`](.agents/skills/write-skill/SKILL.md)       | Add or change a skill, with its evals                                 |
+| [`cut-release`](.agents/skills/cut-release/SKILL.md)       | Version, check and publish a stable release (maintainers only)        |
 
 Claude Code, OpenCode, Codex, Cursor, Copilot and Gemini CLI all find them
 there (`CONTRIBUTING.md` explains how). Edit the skills in `.agents/skills/`.
@@ -213,7 +214,9 @@ This repo uses GitFlow:
 - **`develop`** is the integration branch. Feature branches and dependency PRs
   start here and merge back here.
 - **`main`** receives release merges only (`release/*` → `main`, then merge-back
-  to `develop`).
+  to `develop`). A changeset merged to `develop` publishes only a `dev`
+  snapshot. Stable releases are manual and maintainer-run, following the
+  `cut-release` skill.
 - Renovate (`baseBranches: ["develop"]`) and changesets (`baseBranch: develop`)
   target `develop`. CodeQL scans `develop`.
 

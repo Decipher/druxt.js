@@ -50,6 +50,7 @@
     "perf:audit:test": "node --test scripts/perf-audit/test/*.test.mjs",
     "release:check": "node scripts/release/check.mjs",
     "release:check:test": "node --test scripts/release/test/*.test.mjs",
+    "release:pack": "node scripts/release/pack.mjs",
     "skills:eval": "cd .agents/evals && npm install --no-audit --no-fund && npx promptfoo eval -c promptfooconfig.yaml",
     "postinstall": "husky install",
     "test": "yarn test:unit && yarn test:e2e",

@@ -63,7 +63,7 @@ Druxt welcomes contributions written with AI coding agents. They go through the 
 The repository is set up for agents:
 
 - [`AGENTS.md`](AGENTS.md) holds the project instructions. Claude Code (v2.1.277 or later), Codex, Cursor, Gemini CLI, Copilot and OpenCode read it directly.
-- Contributor skills in [`.agents/skills/`](.agents/skills) cover the project workflow: starting work, changesets, verification, pull requests, review and issue triage. `.claude/skills` links to the same directory for Claude Code. The table in `AGENTS.md` lists them.
+- Contributor skills in [`.agents/skills/`](.agents/skills) cover the project workflow: starting work, changesets, verification, pull requests, review, issue triage and releases. `.claude/skills` links to the same directory for Claude Code. The table in `AGENTS.md` lists them.
 
 A few things to know:
 
