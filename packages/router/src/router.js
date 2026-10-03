@@ -239,7 +239,9 @@ class DruxtRouter {
       const homePath = prefix ? `/${prefix}` : '/'
       // An unprefixed path reports the default langcode, so "/" is already the
       // home path and redirecting it to "/<langcode>" is a redirect to itself.
-      if (!['/', homePath].includes(url.pathname)) {
+      // "/<langcode>/" is the home path too: redirecting it to "/<langcode>"
+      // loops behind servers that add the trailing slash back.
+      if (!['/', homePath, `${homePath}/`].includes(url.pathname)) {
         return homePath
       }
       return false
