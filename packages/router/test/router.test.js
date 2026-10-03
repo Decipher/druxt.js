@@ -193,12 +193,12 @@ describe('DruxtRouter', () => {
     })
     expect(redirect).toBe(false)
 
-    // Anything else redirects to the prefixed home path, with its trailing slash.
+    // Anything else still redirects to the prefixed home path.
     redirect = router.getRedirect('/node/1', {
       isHomePath: true,
       props: { langcode: 'es' }
     })
-    expect(redirect).toBe('/es/')
+    expect(redirect).toBe('/es')
 
     // Clean url redirect.
     redirect = router.getRedirect('/node/2', {

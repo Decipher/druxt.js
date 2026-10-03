@@ -242,7 +242,7 @@ class DruxtRouter {
       // "/<langcode>/" is the home path too: redirecting it to "/<langcode>"
       // loops behind servers that add the trailing slash back.
       if (!['/', homePath, `${homePath}/`].includes(url.pathname)) {
-        return homePath.endsWith('/') ? homePath : `${homePath}/`
+        return homePath
       }
       return false
     }
