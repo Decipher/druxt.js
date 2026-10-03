@@ -149,6 +149,15 @@ describe('DruxtRouter', () => {
     expect(cachedResourceIndex).toHaveProperty('href')
   })
 
+  // Redirecting "/es/" to "/es" loops behind servers that add the slash back.
+  test('a prefixed home path with a trailing slash does not redirect', () => {
+    const redirect = router.getRedirect('/es/', {
+      isHomePath: true,
+      props: { langcode: 'es' }
+    })
+    expect(redirect).toBe(false)
+  })
+
   test('getRedirect', () => {
     let redirect
 
