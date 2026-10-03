@@ -1,6 +1,6 @@
 ---
 name: cut-release
-description: Walks a druxt.js maintainer through a stable release, from a release branch off develop to versioned packages on npm and the merges back into main and develop.
+description: Walks a druxt.js maintainer through a stable release, from a release branch off develop to versioned packages on npm and the merges back into main and develop. Use when asked how druxt.js is released, to cut, prepare or publish a release, to version the pending changesets, or why a package is only on the dev tag.
 ---
 
 # Cut a release
