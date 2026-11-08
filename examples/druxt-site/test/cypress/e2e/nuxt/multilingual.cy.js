@@ -1,6 +1,6 @@
 // Multilingual behaviour, end to end. Everything this asserts was broken at
 // some point and fixed deliberately: the language resolving from the
-// requested path (decoupled_router #3111456, druxt #3273228 patches), the
+// requested path (decoupled_router #3111456, druxt #3273228), the
 // Spanish config translation collection landing at provision, and the
 // language-prefixed JSON:API proxies. If any of it regresses, this spec is
 // the alarm.

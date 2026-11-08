@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ddc8d5bd1cd78ddd6d16ab37a529c486",
+    "content-hash": "ddec871f98c8ad8d88560b5063fa3b4d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1493,17 +1493,11 @@
         },
         {
             "name": "drupal/decoupled_router",
-            "version": "2.0.7",
+            "version": "dev-2.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/decoupled_router.git",
-                "reference": "2.0.7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/decoupled_router-2.0.7.zip",
-                "reference": "2.0.7",
-                "shasum": "448bf05bc840b442025aea547a7c3cb0dd600fb9"
+                "reference": "d5438bcc"
             },
             "require": {
                 "drupal/core": "^10.1 || ^11",
@@ -1517,12 +1511,15 @@
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
                 "drupal": {
-                    "version": "2.0.7",
-                    "datestamp": "1787382329",
+                    "version": "2.0.7+2-dev",
+                    "datestamp": "1793927348",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -13544,7 +13541,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": {
+        "drupal/decoupled_router": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {},
